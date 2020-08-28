@@ -21,37 +21,20 @@ namespace CardGame
 
          */
         public string Brand { get; set; }
-        private string _suit;
-        public string Suit
-        {
-            get
-            {
-                return _suit;
-            }
-            set
-            {
-                if (value == "Joker")
-                {
-                    _suit = null;
-                }
-                else
-                {
-                    _suit = value;
-                }
-            }
-        }
+        public string Suit { get; set; }
+
         public string Number { get; set; }
+
         public bool FoldedCorner { get; set; }
 
         public Card() //Default constructor
         {
-            Brand = "Bicycle";
-            Suit = "Spade";
-            Number = "Ace";
+            Brand = "Default Brand";
+            Suit = "Default Suit";
+            Number = "Deafult Number";
             FoldedCorner = false; // False equals that the card looks brand new and not folded
-
-
         }
+
     }
 
 
