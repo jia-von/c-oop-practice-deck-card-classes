@@ -13,14 +13,10 @@ namespace CardGame
             {
                 Cards = new Stack<Card>()
             };
-            string[] suits = new string[] { "Heart", "Diamonds", "Spade", "Clubs"}; // Create an array of suit for my deck of cards
             
-            //Create an array of numbers for the cards. 
-            string[] numbers = new string[] { "Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King" }; 
-            
-            foreach(string suit in suits)
+            foreach(Card.SuitValue suit in Enum.GetValues(typeof(Card.SuitValue)))
             {
-                foreach(string number in numbers)
+                foreach(Card.NumberValue number in Enum.GetValues(typeof(Card.NumberValue)))
                 {
                     theDeck.Cards.Push(new Card()
                     {
@@ -34,7 +30,7 @@ namespace CardGame
             theDeck.Cards.Push(new Card()
             {
                 Brand = "Bicycle",
-                Number = "Joker",
+                Number = Card.NumberValue.Joker,
                 Suit = null,
                 FoldedCorner = false
             });
@@ -42,7 +38,7 @@ namespace CardGame
             theDeck.Cards.Push(new Card()
             {
                 Brand = "Bicycle",
-                Number = "Joker",
+                Number = Card.NumberValue.Joker,
                 Suit = null,
                 FoldedCorner = true
             });
