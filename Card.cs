@@ -22,8 +22,25 @@ namespace CardGame
          */
         public string Brand { get; set; }
         public string Suit { get; set; }
-
-        public string Number { get; set; }
+        public string _number;
+        public string Number {
+            get
+            {
+                return _number;
+            }
+            set
+            {
+                if(value == "Joker")
+                {
+                    _number = "Joker";
+                    Suit = null;
+                }
+                else
+                {
+                    _number = value;
+                }
+            } 
+        }
 
         public bool FoldedCorner { get; set; }
 
@@ -31,11 +48,8 @@ namespace CardGame
         {
             Brand = "Default Brand";
             Suit = "Default Suit";
-            Number = "Deafult Number";
+            Number = "Default Number";
             FoldedCorner = false; // False equals that the card looks brand new and not folded
         }
-
     }
-
-
 }
