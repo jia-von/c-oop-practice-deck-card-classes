@@ -21,35 +21,63 @@ namespace CardGame
 
          */
         public string Brand { get; set; }
-        public string Suit { get; set; }
-        public string _number;
-        public string Number {
+        public enum SuitValue
+        {
+            Spades,
+            Clubs, 
+            Hearts,
+            Diamonds
+        }
+        public SuitValue? Suit { get; set; }
+        public enum NumberValue
+        {
+            Ace,
+            Two,
+            Three,
+            Four,
+            Five,
+            Six,
+            Seven,
+            Eight,
+            Nine,
+            Ten,
+            Jack,
+            Queen,
+            King,
+            Joker
+        }
+
+        private NumberValue _number;
+        public NumberValue Number
+        {
             get
             {
                 return _number;
             }
             set
             {
-                if(value == "Joker")
+                // If it's going to be a joker and still has a suit:
+                if (value == NumberValue.Joker && Suit != null)
                 {
-                    _number = "Joker";
+                    // Allow the set to go through, but force suit to be null.
+                    _number = value;
                     Suit = null;
                 }
+                // If it's going to be something other than joker and does not have a suit:
+                else if (value != NumberValue.Joker && Suit == null)
+                {
+                    // Allow the set to go through, but force the suit to be spades (or any other suit really, just has to have one).
+                    _number = value;
+                    Suit = SuitValue.Spades;
+                }
+                // If the suit is set, and the value is not joker.
                 else
                 {
                     _number = value;
                 }
-            } 
+            }
         }
-
         public bool FoldedCorner { get; set; }
 
-        public Card() //Default constructor
-        {
-            Brand = "Default Brand";
-            Suit = "Default Suit";
-            Number = "Default Number";
-            FoldedCorner = false; // False equals that the card looks brand new and not folded
-        }
     }
 }
